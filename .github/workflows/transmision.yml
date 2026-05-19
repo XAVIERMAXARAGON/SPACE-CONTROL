@@ -17,20 +17,20 @@ jobs:
         sudo curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o /usr/local/bin/yt-dlp
         sudo chmod a+rx /usr/local/bin/yt-dlp
 
-    - name: Iniciar Rejilla Tactica y Transmitir
+    - name: Extraer Streams y Transmitir Rejilla
       run: |
-        URL1=$(yt-dlp -g "https://www.youtube.com/watch?v=FuuC4dpSQ1M")
-        URL2=$(yt-dlp -g "https://www.youtube.com/watch?v=6g4Fh8K-MhY")
-        URL3=$(yt-dlp -g "https://www.youtube.com/watch?v=Zdy0AxaVYvI")
-        URL4=$(yt-dlp -g "https://www.youtube.com/watch?v=fVv6Nco0nCc")
-        URL5=$(yt-dlp -g "https://www.youtube.com/watch?v=ToUVD_JdKvM")
-        URL6=$(yt-dlp -g "https://www.youtube.com/watch?v=8mH9NbeG37I")
-        URL7=$(yt-dlp -g "https://www.youtube.com/watch?v=HQzG86v1gcY")
-        URL8=$(yt-dlp -g "https://www.youtube.com/watch?v=fO9e9jnhYK8")
-        URL9=$(yt-dlp -g "https://www.youtube.com/watch?v=9S7fP6f407Q")
-        URL10=$(yt-dlp -g "https://www.youtube.com/watch?v=fU_bA_3PZ_U")
-        URL11=$(yt-dlp -g "https://www.youtube.com/watch?v=YpZntnB0f1E")
-        URL12=$(yt-dlp -g "https://www.youtube.com/watch?v=D_9vPZ2EAg0")
+        URL1=$(yt-dlp -g -f "best" "https://www.youtube.com/watch?v=FuuC4dpSQ1M")
+        URL2=$(yt-dlp -g -f "best" "https://www.youtube.com/watch?v=6g4Fh8K-MhY")
+        URL3=$(yt-dlp -g -f "best" "https://www.youtube.com/watch?v=Zdy0AxaVYvI")
+        URL4=$(yt-dlp -g -f "best" "https://www.youtube.com/watch?v=fVv6Nco0nCc")
+        URL5=$(yt-dlp -g -f "best" "https://www.youtube.com/watch?v=ToUVD_JdKvM")
+        URL6=$(yt-dlp -g -f "best" "https://www.youtube.com/watch?v=8mH9NbeG37I")
+        URL7=$(yt-dlp -g -f "best" "https://www.youtube.com/watch?v=HQzG86v1gcY")
+        URL8=$(yt-dlp -g -f "best" "https://www.youtube.com/watch?v=fO9e9jnhYK8")
+        URL9=$(yt-dlp -g -f "best" "https://www.youtube.com/watch?v=9S7fP6f407Q")
+        URL10=$(yt-dlp -g -f "best" "https://www.youtube.com/watch?v=fU_bA_3PZ_U")
+        URL11=$(yt-dlp -g -f "best" "https://www.youtube.com/watch?v=YpZntnB0f1E")
+        URL12=$(yt-dlp -g -f "best" "https://www.youtube.com/watch?v=D_9vPZ2EAg0")
 
         ffmpeg \
           -re -i "$URL1" -re -i "$URL2" -re -i "$URL3" -re -i "$URL4" \
