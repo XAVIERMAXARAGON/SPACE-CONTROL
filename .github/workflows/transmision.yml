@@ -1,0 +1,39 @@
+name: Transmision en Vivo Space Control
+
+on:
+  workflow_dispatch: # Permite activar y desactivar la transmision con un boton manual
+
+jobs:
+  transmitir:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Clonar el repositorio
+      uses: actions/checkout@v3
+
+    - name: Instalar FFmpeg con soporte RTMP y xstack
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y ffmpeg
+
+    - name: Iniciar Rejilla Táctica Compleja y Transmitir
+      run: |
+        ffmpeg \
+          -i "URL_VIDEO_1" -i "URL_VIDEO_2" -i "URL_VIDEO_3" -i "URL_VIDEO_4" \
+          -i "URL_VIDEO_5" -i "URL_VIDEO_6" -i "URL_VIDEO_7" -i "URL_VIDEO_8" \
+          -i "URL_VIDEO_9" -i "URL_VIDEO_10" -i "URL_VIDEO_11" -i "URL_VIDEO_12" \
+          -i "marcos/liveussspacestation.png" -i "marcos/livespaceobjets.png" -i "marcos/livenasanetwork.png" -i "marcos/liveradiationwatch.png" \
+          -i "marcos/livegammairradiators.png" -i "marcos/livemilitaryactivity.png" -i "marcos/livenaturalevents.png" -i "marcos/liveorbitalsurveillance.png" \
+          -i "marcos/livesolaractivity.png" -i "marcos/livespacecam.png" -i "marcos/livespacecam.png" -i "marcos/liveorbitalsurveillance.png" \
+          -filter_complex "
+          [0:v]scale=480:360[v1]; [1:v]scale=480:360[v2]; [2:v]scale=480:360[v3]; [3:v]scale=480:360[v4];
+          [4:v]scale=480:360[v5]; [5:v]scale=480:360[v6]; [6:v]scale=480:360[v7]; [7:v]scale=480:360[v8];
+          [8:v]scale=480:360[v9]; [9:v]scale=480:360[v10]; [10:v]scale=480:360[v11]; [11:v]scale=480:360[v12];
+          [12:v]scale=480:360[m1]; [13:v]scale=480:360[m2]; [14:v]scale=480:360[m3]; [15:v]scale=480:360[m4];
+          [16:v]scale=480:360[m5]; [17:v]scale=480:360[m6]; [18:v]scale=480:360[m7]; [19:v]scale=480:360[m8];
+          [20:v]scale=480:360[m9]; [21:v]scale=480:360[m10]; [22:v]scale=480:360[m11]; [23:v]scale=480:360[m12];
+          [v1][m1]overlay=0:0[c1]; [v2][m2]overlay=0:0[c2]; [v3][m3]overlay=0:0[c3]; [v4][m4]overlay=0:0[c4];
+          [v5][m5]overlay=0:0[c5]; [v6][m6]overlay=0:0[c6]; [v7][m7]overlay=0:0[c7]; [v8][m8]overlay=0:0[c8];
+          [v9][m9]overlay=0:0[c9]; [v10][m10]overlay=0:0[c10]; [v11][m11]overlay=0:0[c11]; [v12][m12]overlay=0:0[c12];
+          [c1][c2][c3][c4][c5][c6][c7][c8][c9][c10][c11][c12]xstack=inputs=12:layout=0_0|480_0|960_0|1440_0|0_360|480_360|960_360|1440_360|0_720|480_720|960_720|1440_720[v]" \
+          -map "[v]" -c:v libx264 -preset veryfast -b:v 4500k -maxrate 4500k -bufsize 9000k \
+          -g 60 -f flv "rtmp://a.rtmp.youtube.com/live2/${{ secrets.YOUTUBE_KEY }}"
