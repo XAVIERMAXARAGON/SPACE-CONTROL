@@ -21,9 +21,9 @@ jobs:
           -i "URL_VIDEO_1" -i "URL_VIDEO_2" -i "URL_VIDEO_3" -i "URL_VIDEO_4" \
           -i "URL_VIDEO_5" -i "URL_VIDEO_6" -i "URL_VIDEO_7" -i "URL_VIDEO_8" \
           -i "URL_VIDEO_9" -i "URL_VIDEO_10" -i "URL_VIDEO_11" -i "URL_VIDEO_12" \
-          -i "marcos/liveussspacestation.png" -i "marcos/livespaceobjets.png" -i "marcos/livenasanetwork.png" -i "marcos/liveradiationwatch.png" \
-          -i "marcos/livegammairradiators.png" -i "marcos/livemilitaryactivity.png" -i "marcos/livenaturalevents.png" -i "marcos/liveorbitalsurveillance.png" \
-          -i "marcos/livesolaractivity.png" -i "marcos/livespacecam.png" -i "marcos/livespacecam.png" -i "marcos/liveorbitalsurveillance.png" \
+          -i ".github/workflows/marcos/liveussspacestation.png" -i ".github/workflows/marcos/livespaceobjets.png" -i ".github/workflows/marcos/livenasanetwork.png" -i ".github/workflows/marcos/liveradiationwatch.png" \
+          -i ".github/workflows/marcos/livegammairradiators.png" -i ".github/workflows/marcos/livemilitaryactivity.png" -i ".github/workflows/marcos/livenaturalevents.png" -i ".github/workflows/marcos/liveorbitalsurveillance.png" \
+          -i ".github/workflows/marcos/livesolaractivity.png" -i ".github/workflows/marcos/livespacecam.png" -i ".github/workflows/marcos/livespacecam.png" -i ".github/workflows/marcos/liveorbitalsurveillance.png" \
           -filter_complex "
           [0:v]scale=480:360[v1]; [1:v]scale=480:360[v2]; [2:v]scale=480:360[v3]; [3:v]scale=480:360[v4];
           [4:v]scale=480:360[v5]; [5:v]scale=480:360[v6]; [6:v]scale=480:360[v7]; [7:v]scale=480:360[v8];
